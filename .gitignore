@@ -1,1 +1,10 @@
-# Add any directories, files, or patterns you don't want to be tracked by version control
+barley_IBSC_PGSB_v2.fasta
+bosTau8.fasta
+budworm.fasta
+bw6_03Feb15.fasta
+Estimate_GBS_budworm_PstI_MspI_80_325.out
+Gmax_275_v2_0.fasta
+hs_ref_GRCh38_p7.fasta
+Resume_Estimate_GBS_budworm_PstI_MspI_80_325.out
+ssa_ref_ICSASG_v2.fasta
+*~
