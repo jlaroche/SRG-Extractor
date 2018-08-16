@@ -1,5 +1,8 @@
 # GBS Estimation and Skinny Reference Genome#
 
+This work is based on an original idea of Davoud Torkamaneh, postdoc at Guelph University, Canada.  
+
+
 As the name suggests, this project has two parts. The first part deals with the *in silico* estimation of what kind
 of results one is expect to obtain when using a particular parameter set on a reference genome.
 For each sequence (chromosome, contig, scaffold) of the reference genome, the script create a frequence distribution
@@ -26,6 +29,7 @@ The parameters one can submit to this analysis are:
 9. species (Species name)  
 
 Parameters for the frequence distribution of fragment length:  
+
 10. init_a_bin: initial value to start the distribution  
 11. max_b_bin: maximal value of the distribution  
 12. step_d_bin: step value  
