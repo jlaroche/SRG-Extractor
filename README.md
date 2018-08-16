@@ -1,6 +1,6 @@
 # GBS Estimation and Skinny Reference Genome#
 
-This work is based on an original idea of Davoud Torkamaneh, postdoc at Guelph University, Canada.  
+###**This work is based on an original idea of Davoud Torkamaneh, postdoc at Guelph University, Canada.**###  
 
 
 As the name suggests, this project has two parts. The first part deals with the *in silico* estimation of what kind
