@@ -14,22 +14,24 @@ execution time of a real GBS analysis when using this new reduced reference geno
 The script created for this section is ```gbs_estimation.py```
 
 The parameters one can submit to this analysis are:  
-enzymeStart (First enzyme)  
-enzymeEnd (Second enzyme (optional))  
-meth (Methylation fraction)  
-minbp (Minimal fragment size)  
-maxbp (Maximal fragment size)  
-cov (Expected coverage)  
-mperc (Fraction of missing sites)  
-infile (File containing genome to analyze)  
-species (Species name)  
+
+1. enzymeStart (First enzyme)  
+2. enzymeEnd (Second enzyme (optional))  
+3. meth (Methylation fraction)  
+4. minbp (Minimal fragment size)  
+5. maxbp (Maximal fragment size)  
+6. cov (Expected coverage)  
+7. mperc (Fraction of missing sites)  
+8. infile (File containing genome to analyze)  
+9. species (Species name)  
 
 Parameters for the frequence distribution of fragment length:  
-init_a_bin: initial value to start the distribution  
-max_b_bin: maximal value of the distribution  
-step_d_bin: step value  
+10. init_a_bin: initial value to start the distribution  
+11. max_b_bin: maximal value of the distribution  
+12. step_d_bin: step value  
 
 Two output files are created  
+
 1. a table containing the results from the in sillico digestion and the number of fragments obtained for each sequence of the reference genome  
 2. a distribution length of the fragments obtained for each sequence of the reference genome  
 
