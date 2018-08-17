@@ -28,38 +28,38 @@ to increase SNP counts and accuracy. A SRG can be integrated into any RRS analyt
 
 1. Create a bed file containing the regions of interest in the original reference genome:   
 
-```./srg_extractor.py enzymeStart enzymeEnd minBpFragments maxBpFragments genome.fasta species```  
+	```./srg_extractor.py enzymeStart enzymeEnd minBpFragments maxBpFragments genome.fasta species```  
 
-This will create a file called  
+	This will create a file called  
 
-```genome_fragments.bed ```  
+	```genome_fragments.bed ```  
 
-List of options:  
-enzymeStart: First enzyme     
-enzymeEnd: Second enzyme (optional))  
-minbp: Minimal fragment size  
-maxbp: Maximal fragment size  
-genome.fasta: Original reference genome sequence in FASTA format  
+	List of options:  
+	enzymeStart: First enzyme     
+	enzymeEnd: Second enzyme (optional))  
+	minbp: Minimal fragment size  
+	maxbp: Maximal fragment size  
+	genome.fasta: Original reference genome sequence in FASTA format  
 
 1. Create a bed file for the original genome. This is simply a file containing the name and the length of each sequence: 
 
-```./make_genome_file.py genome.fasta``` 
+	```./make_genome_file.py genome.fasta``` 
 
-This will create a file called 
+	This will create a file called 
 
-```genome.bed```  
+	```genome.bed```  
 
 1. Create a bed file including uninterested regions from the original reference genome using bedtools complement. This is the complement of the file create in step 1.  
 
-```bedtools complement -i genome_fragments.bed -g genome.bed > genome_fragments_complement.bed```  
+	```bedtools complement -i genome_fragments.bed -g genome.bed > genome_fragments_complement.bed```  
 
 1. Masking uninterested regions using bestools:  
 
-```bedtools maskfasta -fi genome.fasta -bed genome_fragments_complement.bed -fo SRG.fasta```  
+	```bedtools maskfasta -fi genome.fasta -bed genome_fragments_complement.bed -fo SRG.fasta```  
 
 1.  Indexing the new reference genome file  
 
-```bwa index -a bwtsw SRG.fasta```  
-```samtools faidx SRG.fasta```  
+	```bwa index -a bwtsw SRG.fasta```  
+	```samtools faidx SRG.fasta```  
 
 1. Continue with fastgbs.  
