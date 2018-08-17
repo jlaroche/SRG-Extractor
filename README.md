@@ -35,7 +35,7 @@ to increase SNP counts and accuracy. A SRG can be integrated into any RRS analyt
 	```genome_fragments.bed ```  
 
   
-	List of options:
+	List of options:  
 		* enzymeStart: First enzyme     
 		* enzymeEnd: Second enzyme (optional))  
 		* minbp: Minimal fragment size  
