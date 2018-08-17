@@ -41,7 +41,7 @@ minbp: Minimal fragment size
 maxbp: Maximal fragment size  
 genome.fasta: Original reference genome sequence in FASTA format  
 
-2. Create a bed file for the original genome. This is simply a file containing the name and the length of each sequence: 
+1. Create a bed file for the original genome. This is simply a file containing the name and the length of each sequence: 
 
 ```./make_genome_file.py genome.fasta``` 
 
@@ -49,17 +49,17 @@ This will create a file called
 
 ```genome.bed```  
 
-3. Create a bed file including uninterested regions from the original reference genome using bedtools complement. This is the complement of the file create in step 1.  
+1. Create a bed file including uninterested regions from the original reference genome using bedtools complement. This is the complement of the file create in step 1.  
 
 ```bedtools complement -i genome_fragments.bed -g genome.bed > genome_fragments_complement.bed```  
 
-4. Masking uninterested regions using bestools:  
+1. Masking uninterested regions using bestools:  
 
 ```bedtools maskfasta -fi genome.fasta -bed genome_fragments_complement.bed -fo SRG.fasta```  
 
-5.  Indexing the new reference genome file  
+1.  Indexing the new reference genome file  
 
 ```bwa index -a bwtsw SRG.fasta```  
 ```samtools faidx SRG.fasta```  
 
-6. Continue with fastgbs.  
+1. Continue with fastgbs.  
