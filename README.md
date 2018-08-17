@@ -34,12 +34,13 @@ to increase SNP counts and accuracy. A SRG can be integrated into any RRS analyt
 
 	```genome_fragments.bed ```  
 
+  
 	List of options:  
-	enzymeStart: First enzyme     
-	enzymeEnd: Second enzyme (optional))  
-	minbp: Minimal fragment size  
-	maxbp: Maximal fragment size  
-	genome.fasta: Original reference genome sequence in FASTA format  
+	* enzymeStart: First enzyme     
+	* enzymeEnd: Second enzyme (optional))  
+	* minbp: Minimal fragment size  
+	* maxbp: Maximal fragment size  
+	* genome.fasta: Original reference genome sequence in FASTA format  
 
 1. Create a bed file for the original genome. This is simply a file containing the name and the length of each sequence: 
 
