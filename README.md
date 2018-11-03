@@ -5,7 +5,7 @@ A bioinformatic program designed to create a skinny reference genome (SRG) for r
 This work is based on an original idea of Davoud Torkamaneh, postdoc at Guelph University, Canada.
 
 
-# Introduction
+## Introduction
 
 Reduced-representation sequencing (RRS) is a genome-wide scanning method for simultaneous
 discovery and genotyping of thousands to millions of SNPs that is used across a wide range
@@ -15,7 +15,7 @@ reference genome. Here we present a skinny reference genome (SRG) approach in wh
 simplified reference genome is used to decrease computing time for data processing and
 to increase SNP counts and accuracy. A SRG can be integrated into any RRS analytical pipeline.  
 
-# Requirements
+## Requirements
 
 1. Linux with parallel installed (http://www.gnu.org/software/parallel/)  
 2. Python 2.7 or higher (https://www.python.org/) 
@@ -26,7 +26,7 @@ to increase SNP counts and accuracy. A SRG can be integrated into any RRS analyt
 7. srg_extractor.py (this distribution) 
 
 
-# SRG Extractor workflow
+## SRG Extractor workflow
 
 * **Stage 1:** in silico fragmentation
 * **Stage 2:** Characterization of reference genome
@@ -40,9 +40,9 @@ Below is a schematic of the workflow, with inputs and outputs indicated for each
 
 
 
-# Running SRG Extractor
+## Running SRG Extractor
 
-## Stage 1: in silico fragmentation:
+### Stage 1: in silico fragmentation:
 
 Create a bed file containing the genomic regions that can be produce through RRS library prep from the original reference genome:
 
@@ -71,7 +71,7 @@ Example for soybean:
 
 
   
-## Stage 2: Characterization of reference genome	
+### Stage 2: Characterization of reference genome	
 
 Create a bed file for the original reference genome. This is simply a file containing the name and the length of each sequence: 
 
@@ -87,7 +87,7 @@ Example for soybean:
 
 
 
-## Stage 3: Identification of GBS-irrelevant regions
+### Stage 3: Identification of GBS-irrelevant regions
 
 Create a bed file including GBS-irrelevant regions from the original reference genome:
 	
@@ -99,7 +99,7 @@ This will create a file called:
 
 
  
-## Stage 4: Masking GBS-irrelevant regions and creating an SRG
+### Stage 4: Masking GBS-irrelevant regions and creating an SRG
 
 Mask the GBS-irrelevant regions and create an SRG:
 	
@@ -116,7 +116,7 @@ Example for soybean:
   
 
 
-## **Reminder:** same as any reference genome you should index the SRG before using:
+### **Reminder:** same as any reference genome you should index the SRG before using:
 
 
 Example:
