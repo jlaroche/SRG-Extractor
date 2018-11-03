@@ -33,7 +33,7 @@ Stage 3: Identification of GBS-irrelevant regions
 Stage 4: Masking GBS-irrelevant regions and creating an SRG
 
 
-Below is a schematic of the workflow, with inputs and outputs indicated for each stage. 
+Below is a schematic of the workflow, with inputs and outputs indicated for each stage.ï¿½
 
 
 
@@ -89,6 +89,7 @@ Create a bed file including GBS-irrelevant regions from the original reference g
 This will create a file called:
 	
 	```genome_fragments_complement.bed```
+	
  
 Stage 4: Masking GBS-irrelevant regions and creating an SRG
 
