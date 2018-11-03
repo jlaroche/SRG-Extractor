@@ -15,52 +15,91 @@ reference genome. Here we present a skinny reference genome (SRG) approach in wh
 simplified reference genome is used to decrease computing time for data processing and
 to increase SNP counts and accuracy. A SRG can be integrated into any RRS analytical pipeline.  
 
-## Dependencies##
+## Requirements##
 
 1. Linux with parallel installed (http://www.gnu.org/software/parallel/)  
 2. Python 2.7 or higher (https://www.python.org/)  
 3. bwa (https://github.com/lh3/bwa)  
 4. samtools (http://www.htslib.org/)  
 5. bedtools (https://bedtools.readthedocs.io/en/latest/)  
-6. srg_extractor.py (this distribution)  
+6. srg_extractor.py (this distribution) 
+
+## SRG Extractor workflow ##
+
+1. Stage 1: in silico fragmentation
+1. Stage 2: Characterization of reference genome
+1. Stage 3: Identification of GBS-irrelevant regions
+1. Stage 4: Masking GBS-irrelevant regions and creating an SRG
+
+
+Below is a schematic of the workflow, with inputs and outputs indicated for each stage. 
+
+
+
+
 
 ## Running SRG Extractor ##
 
-1. Create a bed file containing the regions of interest in the original reference genome:   
+1. Stage 1: in silico fragmentation:
+	Create a bed file containing the genomic regions that can be produce through RRS library prep from the original reference genome:   
 
-	```./srg_extractor.py enzymeStart enzymeEnd minBpFragments maxBpFragments genome.fasta species```  
-
-	This will create a file called  
-
-	```genome_fragments.bed ```  
-
-  
+	```./srg_extractor.py enzymeStart enzymeEnd minBpFragments maxBpFragments genome.fasta species``` 
+	
+	
 	List of options:  
 		* enzymeStart: First enzyme     
 		* enzymeEnd: Second enzyme (optional))  
 		* minbp: Minimal fragment size  
 		* maxbp: Maximal fragment size  
 		* genome.fasta: Original reference genome sequence in FASTA format  
+	
+	Example for soybean:		
+	
+	```./srg_extractor.py ApeKI ApeKI 50 1000 Gmax_275_v2_0.fasta soybean```
 
-1. Create a bed file for the original genome. This is simply a file containing the name and the length of each sequence: 
+
+	This will create a file called: 
+
+	```genome_fragments.bed ```  
+
+  
+1. Stage 2: Characterization of reference genome	
+	Create a bed file for the original reference genome. This is simply a file containing the name and the length of each sequence: 
 
 	```./make_genome_file.py genome.fasta``` 
+	
+	Example for soybean:
+	
+	```./make_genome_file.py Gmax_275_v2_0.fasta```
 
-	This will create a file called 
+	This will create a file called:
 
 	```genome.bed```  
 
-1. Create a bed file including uninterested regions from the original reference genome using bedtools complement. This is the complement of the file create in step 1.  
+1. Stage 3: Identification of GBS-irrelevant regions
+	Create a bed file including GBS-irrelevant regions from the original reference genome:
+	
+	```./gbs_irrelevent.py genome_fragments.bed genome.bed```
 
-	```bedtools complement -i genome_fragments.bed -g genome.bed > genome_fragments_complement.bed```  
+	This will create a file called:
+	
+	```genome_fragments_complement.bed```
+ 
+1. Stage 4: Masking GBS-irrelevant regions and creating an SRG
+	Mask the GBS-irrelevant regions and create an SRG:
+	
+	```./masking.py genome.fasta genome_fragments_complement.bed```
+	
+	Example for soybean:
+	
+	```./masking.py Gmax_275_v2_0.fasta genome_fragments_complement.bed```
+  
 
-1. Masking uninterested regions using bestools:  
+1.  Same as any reference genome you should index the SRG before using:
 
-	```bedtools maskfasta -fi genome.fasta -bed genome_fragments_complement.bed -fo SRG.fasta```  
-
-1.  Indexing the new reference genome file  
-
+	Example:
+	
 	```bwa index -a bwtsw SRG.fasta```  
 	```samtools faidx SRG.fasta```  
 
-1. Continue with fastgbs.  
+1. Now you can use SRG as a reference genome in your RRS pipeline.  
