@@ -23,7 +23,7 @@ echo ""$white"------------------------------------------------------------------
 	echo "srg_extractor.py and make_genome_file.py "$blue"(these two scripts should be in current working directory)""$white"
 echo ""$white"-------------------------------------------------------------------------------------"
 echo
-echo "Are we good to continue? y/n"
+echo "Are we good to continue? y/n""$yellow"
 read REP
 
 	if [ $REP = n ]
@@ -37,30 +37,30 @@ echo
 echo
 echo ""$green"Great, now please answer the following questions:""$white"
 echo
-echo "1- Where is your reference genome? (please type the complete path like:/home/user/refgenome/Gmax_275_v2_0.fasta"
+echo "1- Where is your reference genome? (please type the complete path like:/home/user/refgenome/Gmax_275_v2_0.fasta""$yellow"
 read REF
 
 echo ""$green"Thank you""$white"
 echo
-echo "2- What is your start enzyme? (Please specify like: ApeKI)"
+echo "2- What is your start enzyme? (Please specify like: ApeKI)""$yellow"
 read enzymeStart
 
 echo ""$green"Thank you""$white"
 echo
-echo "3- What is your end enzyme? (This will be the same as start enzyme (ApeKI) if your RRS is with one enzyme)"
+echo "3- What is your end enzyme? (This will be the same as start enzyme (ApeKI) if your RRS is with one enzyme)""$yellow"
 read enzymeEnd
 
 echo ""$green"Thank you""$white"
 echo
-echo "4- Please define the size selection interval in bp? (e.g. 50 1000)"
+echo "4- Please define the size selection interval in bp? (e.g. 50 1000)""$yellow"
 read minBpFragments maxBpFragments
 
 echo ""$green"Thank you""$white"
 echo
-echo "5- What is the name of your species? (e.g. Soybean)"
+echo "5- What is the name of your species? (e.g. Soybean)""$yellow"
 read species
 echo
-echo ""$green"Thank you for your responses. We are starting SRG Extarctor, it may take several minutes.""$white"
+echo ""$green"Thank you for your responses. We are starting SRG Extarctor, it may take several minutes. "$yellow"Please look SRG.log file for error reports!""$white"
 echo
 exec &> SRG.log
 
