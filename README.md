@@ -93,10 +93,7 @@ Create a bed file including GBS-irrelevant regions from the original reference g
 	
 ```./gbs_irrelevent.sh genome_fragments.bed genome.bed genome_fragments_complement.bed```
 
-The result file created is:
-	
-```genome_fragments_complement.bed```
-
+The result file created is the third one.  
 
  
 ### Stage 4: Masking GBS-irrelevant regions and creating an SRG
