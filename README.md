@@ -35,7 +35,7 @@ to increase SNP counts and accuracy. A SRG can be integrated into any RRS analyt
 
 
 Below is a schematic of the workflow, with inputs and outputs indicated for each stage.
-![](https://bitbucket.org/jerlar73/srg-extractor/src/images/workflow.jpeg)
+![Scheme](images/workflow.jpeg)
 
 
 
