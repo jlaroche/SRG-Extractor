@@ -34,8 +34,8 @@ to increase SNP counts and accuracy. A SRG can be integrated into any RRS analyt
 * **Stage 4:** Masking GBS-irrelevant regions and creating an SRG
 
 
-Below is a schematic of the workflow, with inputs and outputs indicated for each stage.�
-
+Below is a schematic of the workflow, with inputs and outputs indicated for each stage.
+![](https://bitbucket.org/jerlar73/srg-extractor/src/images/workflow.jpeg)
 
 
 
