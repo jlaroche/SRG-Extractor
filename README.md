@@ -91,9 +91,9 @@ Example for soybean:
 
 Create a bed file including GBS-irrelevant regions from the original reference genome:
 	
-```./gbs_irrelevent.py genome_fragments.bed genome.bed```
+```./gbs_irrelevent.sh genome_fragments.bed genome.bed genome_fragments_complement.bed```
 
-This will create a file called:
+The result file created is:
 	
 ```genome_fragments_complement.bed```
 
