@@ -29,7 +29,7 @@ read REP
 	if [ $REP = n ]
 		then
 			echo "You may at first need to install the required programs"
-			echo "Have a good day and see you soon"
+			echo "Have a good day and see you soon""$white"
 		exit 1
 	elif [ $REP = y ]
 		then
