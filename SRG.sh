@@ -37,17 +37,17 @@ echo
 echo
 echo ""$green"Great, now please answer the following questions:""$white"
 echo
-echo "1- Where is your reference genome? (please type the complete path like:/home/user/refgenome/Gmax_275_v2_0.fasta""$yellow"
+echo "1- Where is your reference genome? (Please type the complete path like:/home/user/refgenome/Gmax_275_v2_0.fasta""$yellow"
 read REF
 
 echo ""$green"Thank you""$white"
 echo
-echo "2- What is your start enzyme? (Please specify like: ApeKI)""$yellow"
+echo "2- What is the name of your start enzyme? (Please specify like: ApeKI)""$yellow"
 read enzymeStart
 
 echo ""$green"Thank you""$white"
 echo
-echo "3- What is your end enzyme? (This will be the same as start enzyme (ApeKI) if your RRS is with one enzyme)""$yellow"
+echo "3- What is the name of your end enzyme? (If your RRS is with one restriction enzyme this will be the same as start enzyme "$un"(ApeKI)"$nun" if your RRS is with two enzymes like "$un"PstI MspI"$nun", "$un"PstI"$nun" will be the start enzyme and "$un"MspI"$nun" the end enzyme)""$yellow"
 read enzymeEnd
 
 echo ""$green"Thank you""$white"
