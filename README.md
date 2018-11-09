@@ -100,7 +100,7 @@ The result file created is the third one.
 
 Mask the GBS-irrelevant regions and create an SRG:
 	
-```./masking.py genome.fasta genome_fragments_complement.bed```
+```./masking.sh genome.fasta genome_fragments_complement.bed SRG.fasta```
 	
 This will create your SRG:
 	
@@ -109,7 +109,7 @@ This will create your SRG:
 
 Example for soybean:
 	
-```./masking.py Gmax_275_v2_0.fasta genome_fragments_complement.bed```
+```./masking.sh Gmax_275_v2_0.fasta genome_fragments_complement.bed Gmax_275_v2_0_SRG.fasta```
   
 
 
