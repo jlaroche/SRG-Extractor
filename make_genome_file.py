@@ -1,4 +1,4 @@
-#!/prg/python/3.5/bin/python3.5
+#!/usr/bin/env python
 # -*- coding: iso-8859-1 -*-
 
 """
