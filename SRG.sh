@@ -37,7 +37,7 @@ echo
 echo
 echo ""$green"Great, now please answer the following questions:""$white"
 echo
-echo "1- Where is your reference genome? (Please type the complete path like:/home/user/refgenome/Gmax_275_v2_0.fasta""$yellow"
+echo "1- What is the name of your reference genome? (Please type the complete name like: Gmax_275_v2_0.fasta (the file should be in current working directory))""$yellow"
 read REF
 
 echo ""$green"Thank you""$white"
