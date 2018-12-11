@@ -41,6 +41,9 @@ Below is a schematic of the workflow, with inputs and outputs indicated for each
 
 
 ## Running SRG Extractor
+###***SRG.sh*** script is an automated pipeline of SRG Extractor.
+If you are not sure about the requirements on your machine step-by-step approach to create an SRG is recommended.
+
 
 ### Stage 1: in silico fragmentation:
 
@@ -125,7 +128,7 @@ Example:
 
 ## Now you can use SRG as a reference genome in your RRS pipeline.
 
-## For estimation of effective genome size (proportion of the genome which can be captured by RRS) you can use the ```genome_effective_size.py``` script.
+### For estimation of effective genome size (proportion of the genome which can be captured by RRS) you can use the ```genome_effective_size.py``` script.
 
-```genome_effective_size.py SRG.fasta```
+```./genome_effective_size.py SRG.fasta```
 
