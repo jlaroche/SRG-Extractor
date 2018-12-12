@@ -122,7 +122,7 @@ To get basic statistics on your new srg genome, use the script below:
 
 ./stat_srg_genome.py Gmax_275_v2_0_SRG.fasta
 
-
+You will get a table like this:  
 
 |  ID  | Nb of Nuc. | RRS_irrelevant |   SRG     |   SRG%   |
 |------|------------|----------------|-----------|----------|
