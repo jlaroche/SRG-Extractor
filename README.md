@@ -124,6 +124,7 @@ To get basic statistics on your new srg genome, use the script below:
 
 You will get a table like this:  
 
+```
 |  ID  | Nb of Nuc. | RRS_irrelevant |   SRG     |   SRG%   |
 |------|------------|----------------|-----------|----------|
 |Chr01 |  56831624  |     47431131   |   9400493 |  16.54%  |
@@ -148,7 +149,7 @@ You will get a table like this:
 |Chr20 |  47904181  |     39443157   |   8461024 |  17.66%  |
 |------|------------|----------------|-----------|----------|
 |Total | 949183385  |    786011523   | 163171862 |  17.19%  |
-
+```
 
 
 ### **Reminder:** same as any reference genome you should index the SRG before using:
