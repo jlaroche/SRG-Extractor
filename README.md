@@ -124,7 +124,8 @@ To get basic statistics on your new srg genome, use the script below:
 
 
 
-ID	Nb of Nuc.	RRS_irrelevant	SRG	SRG%
+|ID|Nb of Nuc.|RRS_irrelevant|SRG|SRG%|
+|-------------|--------------|---|----|
 Chr01	56831624  47431131  9400493   16.54%
 Chr02     48577505  40399654  8177851   16.83%
 Chr03     45779781  38190044  7589737   16.58%
