@@ -162,7 +162,4 @@ Example:
 
 ## Now you can use SRG as a reference genome in your RRS pipeline.
 
-### For estimation of effective genome size (proportion of the genome which can be captured by RRS) you can use the ```stat_srg_genome.py``` script.
-
-```./stat_srg_genome.py SRG.fasta```
 
