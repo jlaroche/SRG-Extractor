@@ -4,6 +4,7 @@ A bioinformatic program designed to create a skinny reference genome (SRG) for r
 
 This work is based on an original idea of Davoud Torkamaneh, postdoc at Guelph University, Canada.
 
+---
 
 ## Introduction
 
@@ -15,6 +16,8 @@ reference genome. Here we present a skinny reference genome (SRG) approach in wh
 simplified reference genome is used to decrease computing time for data processing and
 to increase SNP counts and accuracy. A SRG can be integrated into any RRS analytical pipeline.  
 
+---
+
 ## Requirements
 
 1. Linux with parallel installed (http://www.gnu.org/software/parallel/)  
@@ -25,6 +28,7 @@ to increase SNP counts and accuracy. A SRG can be integrated into any RRS analyt
 6. bedtools (https://bedtools.readthedocs.io/en/latest/)  
 7. srg_extractor.py (this distribution) 
 
+---
 
 ## SRG Extractor workflow
 
@@ -39,6 +43,7 @@ Below is a schematic of the workflow, with inputs and outputs indicated for each
 
 
 
+---
 
 ## Running SRG Extractor
 ###***SRG.sh*** script is an automated pipeline of SRG Extractor.
@@ -158,7 +163,7 @@ Example:
 ```bwa index -a bwtsw SRG.fasta```  
 ```samtools faidx SRG.fasta```  
 
-
+---
 
 ## Now you can use SRG as a reference genome in your RRS pipeline.
 
