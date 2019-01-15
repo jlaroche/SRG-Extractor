@@ -5,6 +5,7 @@
 ---
 ### Citing
 If you use SRG Extractor in your research, please cite:
+
 Torkamaneh D, Laroche J, Rajcan I, Belzile F (2019). SRG Extractor: A Skinny Reference Genome Approach for Reduced-Representation Sequencing. Bioinformatics. http//DOI: 10.1093/bioinformatics/btz043
 
 ---
