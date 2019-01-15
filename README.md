@@ -1,5 +1,6 @@
 # ***SRG Extractor***: A Skinny Reference Genome Approach for Reduced-Representation Sequencing. 
 
+
 *SRG Extractor* is a bioinformatic program designed to create a skinny reference genome (SRG) for reduced-representation sequencing (RRS) analysis.
 
 ---
@@ -124,6 +125,7 @@ Example for soybean:
 ```./masking.sh Gmax_275_v2_0.fasta genome_fragments_complement.bed Gmax_275_v2_0_SRG.fasta```
   
 
+---
 
 ### Statistics
 
