@@ -1,8 +1,11 @@
-# SRG Extractor
+# ***SRG Extractor***: A Skinny Reference Genome Approach for Reduced-Representation Sequencing. 
 
-A bioinformatic program designed to create a skinny reference genome (SRG) for reduced-representation sequencing (RRS) analysis.
+*SRG Extractor* is a bioinformatic program designed to create a skinny reference genome (SRG) for reduced-representation sequencing (RRS) analysis.
 
-This work is based on an original idea of Davoud Torkamaneh, postdoc at Guelph University, Canada.
+---
+### Citing
+If you use SRG Extractor in your research, please cite:
+Torkamaneh D, Laroche J, Rajcan I, Belzile F (2019). SRG Extractor: A Skinny Reference Genome Approach for Reduced-Representation Sequencing. Bioinformatics. http//DOI: 10.1093/bioinformatics/btz043
 
 ---
 
@@ -154,6 +157,7 @@ Chr20   47904181       39443157      8461024   17.7%
 Total  949183385      786011523    163171862   17.2%
 ```
 
+---
 
 ### **Reminder:** same as any reference genome you should index the SRG before using:
 
