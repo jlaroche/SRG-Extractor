@@ -27,28 +27,83 @@ def analyse(enzymeStart,enzymeEnd,minbp,maxbp,genome,species):
 	file = open(outfile+"_bedfile_"+enzymeStart+"_"+enzymeEnd+"_"+minbp+"_"+maxbp+".bed", 'w')
 
 	rb = RestrictionBatch([enzymeStart])
-	if(enzymeEnd != ''):
+	if(enzymeEnd != enzymeStart):
 		rb.add(enzymeEnd)
 
 #	n=1
 	for record in SeqIO.parse(genome, "fasta"):
 #		print("\n\nSearching restriction sites in sequence " + record.name)
+
 		sites = rb.search(record.seq)
-		for x in sites:
-			print(record.name + "\t" + str(x) + "\t" +str(len(sites[x])) + " sites")
+
+#		for x in sites:
+#			print(record.name + "\t" + str(x) + "\t" +str(len(sites[x])) + " sites")
 #			for y in sites[x]:
 #				print("\t"+str(y))
 #			print(sites)
 		#summary.write(sites)
 
 		cuts=0;
-		list_value=[]
 		for key, value in sites.items():
 			cuts += len(value)
-			list_value.append(str(sites[key]))
 #			print(key)
 #			summary.write(str(key)+ ": " + str(cuts) + " cutting sites found\n")
 #			summary.write(sites[key])
+
+		#In the case of a 2 enzymes analysis, we merge all the positions that those 2 enzymes cuts
+		#We use Python sets which are more faster for searching a value in
+		if(enzymeEnd != enzymeStart):
+			allCuts = sites[rb.get(enzymeStart)] + sites[rb.get(enzymeEnd)]
+			cutsStart = set(sites[rb.get(enzymeStart)])
+			cutsEnd = set(sites[rb.get(enzymeEnd)])
+		else:
+			allCuts = sites[rb.get(enzymeStart)]
+			cutsStart = set(sites[rb.get(enzymeStart)])
+			cutsEnd = {}
+
+		#Put the positions in order
+		allCuts.sort()
+
+		i = 0
+		entries=[]
+		listlength = []
+		for values in allCuts[:-1]:# We don't process the last cut
+			#print(values)
+			if len(cutsEnd) > 0:
+				if(values in cutsStart and allCuts[i+1] in cutsEnd):# or (values in cutsEnd and allCuts[i+1] in cutsStart):
+					beginingPosition = values - 1
+					endPosition = allCuts[i+1] - 1
+					fragment=len(record.seq[beginingPosition:endPosition])
+					entry=SeqRecord(record.seq[beginingPosition:endPosition],id="Fragment_"+enzymeStart+"-"+enzymeEnd+"_"+str(beginingPosition)+"-"+str(endPosition)+"_Length="+str(fragment),description=record.description)
+					entries.append(entry)
+					listlength.append(fragment)
+					#print(beginingPosition,endPosition,fragment)
+				elif(values in cutsEnd and allCuts[i+1] in cutsStart):
+					beginingPosition = values - 1
+					endPosition = allCuts[i+1] - 1
+					fragment=len(record.seq[beginingPosition:endPosition])
+					entry=SeqRecord(record.seq[beginingPosition:endPosition],id="Fragment_"+enzymeEnd+"-"+enzymeStart+"_"+str(beginingPosition)+"-"+str(endPosition)+"_Length="+str(fragment),description=record.description)
+					entries.append(entry)
+					listlength.append(fragment)
+					#print(beginingPosition,endPosition,fragment)
+				else:
+					pass
+			else:
+				beginingPosition = values - 1
+				endPosition = allCuts[i+1] - 1
+				fragment=len(record.seq[beginingPosition:endPosition])
+				entry=SeqRecord(record.seq[beginingPosition:endPosition],id="Fragment_"+enzymeStart+"-"+enzymeStart+"_"+str(beginingPosition)+"-"+str(endPosition)+"_Length="+str(fragment),description=record.description)
+				entries.append(entry)
+				listlength.append(fragment)
+				#print(beginingPosition,endPosition,fragment)
+				
+			i += 1
+		#print("Nombre de fragments total traites: ",i)
+
+
+
+
+
 	
 # 2 RESTRICTION ENZYME USED
 		if(len(rb) == 2):
