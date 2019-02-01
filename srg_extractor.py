@@ -65,8 +65,6 @@ def analyse(enzymeStart,enzymeEnd,minbp,maxbp,genome,species):
 		allCuts.sort()
 
 		i = 0
-		entries=[]
-		listlength = []
 		for values in allCuts[:-1]:# We don't process the last cut
 			#print(values)
 			if len(cutsEnd) > 0:
