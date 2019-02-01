@@ -4,7 +4,7 @@
 To build a synthetic reference genome in silico
 
 Usage:
-	./srg_extractor.py enzymeStart enzymeEnd minBpFragments maxBpFragments genome species
+	./srg_extractor.py enzymeStart enzymeEnd minBpFragments maxbp genome species
 	
 	If using only one restriction enzyme, put it twice in the command line
 	
@@ -17,14 +17,14 @@ import argparse,math,datetime,time,copy,sys,natsort
 #parser = argparse.ArgumentParser()
 
 
-def analyse(enzymeStart,enzymeEnd,minBpFragments,maxBpFragments,genome,species):
+def analyse(enzymeStart,enzymeEnd,minbp,maxbp,genome,species):
 
 	dot = genome.index(".")
 	ext = genome[dot+1:]
 	outfile = genome[:dot]
 	
 # Creation du fichier de sortie:
-	file = open(outfile+"_bedfile_"+enzymeStart+"_"+enzymeEnd+"_"+minBpFragments+"_"+maxBpFragments+".bed", 'w')
+	file = open(outfile+"_bedfile_"+enzymeStart+"_"+enzymeEnd+"_"+minbp+"_"+maxbp+".bed", 'w')
 
 	rb = RestrictionBatch([enzymeStart])
 	if(enzymeEnd != ''):
@@ -67,7 +67,7 @@ def analyse(enzymeStart,enzymeEnd,minBpFragments,maxBpFragments,genome,species):
 						beginingPosition = values - 1
 						endPosition = allCuts[i+1] - 1
 						length=endPosition-beginingPosition
-						if int(minBpFragments)<=length<=int(maxBpFragments):
+						if int(minbp)<=length<=int(maxbp):
 #							file.write(">"+record.name + "_" + str(num) + "_" +str(beginingPosition) + "_" + str(endPosition) + " length:" + str(length) + "\n" + str(record.seq[beginingPosition:endPosition]) + "\n")
 							file.write(record.name + "\t" + str(beginingPosition) + "\t" + str(endPosition) + "\n")
 							num += 1
@@ -91,7 +91,7 @@ def analyse(enzymeStart,enzymeEnd,minBpFragments,maxBpFragments,genome,species):
 					beginingPosition = values - 1
 					endPosition = allCuts[i+1] - 1
 					length=endPosition-beginingPosition
-					if int(minBpFragments)<=length<=int(maxBpFragments):
+					if int(minbp)<=length<=int(maxbp):
 #							file.write(">"+record.name + "_" + str(num) + "_" +str(beginingPosition) + "_" + str(endPosition) + " length:" + str(length) + "\n" + str(record.seq[beginingPosition:endPosition]) + "\n")
 							file.write(record.name + "\t" + str(beginingPosition) + "\t" + str(endPosition) + "\n")
 							num += 1
@@ -111,12 +111,12 @@ def analyse(enzymeStart,enzymeEnd,minBpFragments,maxBpFragments,genome,species):
 try:
     enzymeStart = sys.argv[1]
     enzymeEnd = sys.argv[2]
-    minBpFragments = sys.argv[3]
-    maxBpFragments = sys.argv[4]
+    minbp = sys.argv[3]
+    maxbp = sys.argv[4]
     genome = sys.argv[5]
     species = sys.argv[6]
 except:
 	print(__doc__)
 	sys.exit(1)
 
-analyse(enzymeStart,enzymeEnd,minBpFragments,maxBpFragments,genome,species)
+analyse(enzymeStart,enzymeEnd,minbp,maxbp,genome,species)
