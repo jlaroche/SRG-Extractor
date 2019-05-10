@@ -39,7 +39,8 @@ echo
 echo
 echo ""$green"Great, now please answer the following questions:""$white"
 echo
-echo "1- What is the name of your reference genome? (Please type the complete name like: Gmax_275_v2_0.fasta (the file should be in current working directory))""$yellow"
+echo "1- What is the name of your reference genome? (Please type the complete name WITHOUT the extension (the file should be in current working directory))"
+echo "   If the file name is Gmax_275_v2_0.fasta , enter ONLY Gmax_275_v2_0""$yellow"
 read REF
 
 echo ""$green"Thank you""$white"
