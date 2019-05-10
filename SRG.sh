@@ -9,6 +9,8 @@ bold=`tput bold`
 un=`tput smul`
 nun=`tput rmul`
 
+TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
+
 echo
 echo ""$white"=============="$bold""$red"Welcome to SRG Extractor"$white"=========================="
 echo
@@ -60,11 +62,11 @@ echo
 echo "5- What is the name of your species? (e.g. Soybean)""$yellow"
 read species
 echo
-echo ""$green"Thank you for your responses. We are starting SRG Extarctor, it may take several minutes. "$yellow"Please look SRG.log file for error reports!""$white"
+echo ""$green"Thank you for your responses. We are starting SRG Extactor, it may take several minutes. "$yellow"Please look SRG.log file for error reports!""$white"
 echo
-exec &> SRG.log
+exec &> SRG_$TIMESTAMP.log
 
-./srg_extractor.py $enzymeStart $enzymeEnd $minBpFragments $maxBpFragments $REF $species
+./srg_extractor.py $enzymeStart $enzymeEnd $minBpFragments $maxBpFragments ${REF}.fasta $species
 
 	if [ $? -ne 0 ]
                         then
@@ -72,7 +74,7 @@ exec &> SRG.log
                                 exit 1
                 fi
 
-./make_genome_file.py $REF
+./make_genome_file.py ${REF}.fasta
 
 	if [ $? -ne 0 ]
                         then
@@ -80,14 +82,14 @@ exec &> SRG.log
                                 exit 1
                 fi
 
-bedtools complement -i genome_fragments.bed -g genome.bed > genome_fragments_complement.bed
+bedtools complement -i ${REF}_fragments.bed -g ${REF}.bed > ${REF}_fragments_complement.bed
 	if [ $? -ne 0 ]
                         then
                                 printf "There is a problem at Stage-3"
                                 exit 1
                 fi
 
-bedtools maskfasta -fi $REF -bed genome_fragments_complement.bed -fo SRG_$REF.fasta
+bedtools maskfasta -fi ${REF}.fasta -bed ${REF}_fragments_complement.bed -fo SRG_${REF}.fasta
 
 	if [ $? -ne 0 ]
                         then
@@ -95,7 +97,10 @@ bedtools maskfasta -fi $REF -bed genome_fragments_complement.bed -fo SRG_$REF.fa
                                 exit 1
                 fi
 
-echo "Your SRG is ready, please before using index your SRG"
-echo ""$green"Good bye""$white"
+echo "Your SRG is ready. Before using it, index the file:"
+echo "bwa index -a bwtsw SRG_${REF}.fasta"
+echo "samtools faidx SRG_${REF}.fasta"
+
 fi
+
 exit 0

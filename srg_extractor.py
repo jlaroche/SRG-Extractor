@@ -16,19 +16,37 @@ from Bio.Restriction import *
 import argparse,math,datetime,time,copy,sys,natsort
 #parser = argparse.ArgumentParser()
 
-
 def analyse(enzymeStart,enzymeEnd,minbp,maxbp,genome,species):
 
 	dot = genome.index(".")
 	ext = genome[dot+1:]
 	outfile = genome[:dot]
-	
+
 # Creation du fichier de sortie:
-	file = open(outfile+"_bedfile_"+enzymeStart+"_"+enzymeEnd+"_"+minbp+"_"+maxbp+".bed", 'w')
+#	file = open(outfile+"_bedfile_"+enzymeStart+"_"+enzymeEnd+"_"+minbp+"_"+maxbp+".bed", 'w')
+
+	file = open(outfile+"_fragments.bed", 'w')
+	
+	try:
+		test = RestrictionBatch([enzymeStart])
+	except:
+		print("The first enzyme is not a valid restriction enzyme")
+		sys.exit(1)
+
+	if enzymeEnd != enzymeStart:
+		try:
+			test.add(enzymeEnd)
+		except:
+			print("The second enzyme is not a valid restriction enzyme")
+			sys.exit(1)
+	else:
+		pass
 
 	rb = RestrictionBatch([enzymeStart])
-	if(enzymeEnd != enzymeStart):
+	if enzymeEnd != enzymeStart:
 		rb.add(enzymeEnd)
+	else:
+		pass
 
 	for record in SeqIO.parse(genome, "fasta"):
 #		print("\n\nSearching restriction sites in sequence " + record.name)
