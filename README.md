@@ -1,9 +1,15 @@
-# SRG Extractor
+# ***SRG Extractor***: A Skinny Reference Genome Approach for Reduced-Representation Sequencing. 
 
-A bioinformatic program designed to create a skinny reference genome (SRG) for reduced-representation sequencing (RRS) analysis.
 
-This work is based on an original idea of Davoud Torkamaneh, postdoc at Guelph University, Canada.
+*SRG Extractor* is a bioinformatic program designed to create a skinny reference genome (SRG) for reduced-representation sequencing (RRS) analysis.
 
+---
+### Citing
+If you use SRG Extractor in your research, please cite:
+
+Torkamaneh D, Laroche J, Rajcan I, Belzile F (2019). SRG Extractor: A Skinny Reference Genome Approach for Reduced-Representation Sequencing. Bioinformatics. http//DOI: 10.1093/bioinformatics/btz043
+
+---
 
 ## Introduction
 
@@ -15,6 +21,8 @@ reference genome. Here we present a skinny reference genome (SRG) approach in wh
 simplified reference genome is used to decrease computing time for data processing and
 to increase SNP counts and accuracy. A SRG can be integrated into any RRS analytical pipeline.  
 
+---
+
 ## Requirements
 
 1. Linux with parallel installed (http://www.gnu.org/software/parallel/)  
@@ -25,6 +33,7 @@ to increase SNP counts and accuracy. A SRG can be integrated into any RRS analyt
 6. bedtools (https://bedtools.readthedocs.io/en/latest/)  
 7. srg_extractor.py (this distribution) 
 
+---
 
 ## SRG Extractor workflow
 
@@ -39,8 +48,12 @@ Below is a schematic of the workflow, with inputs and outputs indicated for each
 
 
 
+---
 
 ## Running SRG Extractor
+###***SRG.sh*** script is an automated pipeline of SRG Extractor.
+If you are not sure about the requirements on your machine step-by-step approach to create an SRG is recommended.
+
 
 ### Stage 1: in silico fragmentation:
 
@@ -91,19 +104,16 @@ Example for soybean:
 
 Create a bed file including GBS-irrelevant regions from the original reference genome:
 	
-```./gbs_irrelevent.py genome_fragments.bed genome.bed```
+```./gbs_irrelevant.sh genome_fragments.bed genome.bed genome_fragments_complement.bed```
 
-This will create a file called:
-	
-```genome_fragments_complement.bed```
-
+The result file created is the third one.  
 
  
 ### Stage 4: Masking GBS-irrelevant regions and creating an SRG
 
 Mask the GBS-irrelevant regions and create an SRG:
 	
-```./masking.py genome.fasta genome_fragments_complement.bed```
+```./masking.sh genome.fasta genome_fragments_complement.bed SRG.fasta```
 	
 This will create your SRG:
 	
@@ -112,9 +122,45 @@ This will create your SRG:
 
 Example for soybean:
 	
-```./masking.py Gmax_275_v2_0.fasta genome_fragments_complement.bed```
+```./masking.sh Gmax_275_v2_0.fasta genome_fragments_complement.bed Gmax_275_v2_0_SRG.fasta```
   
 
+---
+
+### Statistics
+
+To get basic statistics on your new srg genome, use the script below:
+
+./stat_srg_genome.py Gmax_275_v2_0_SRG.fasta
+
+You will get a table like this:  
+
+```
+  ID   Nb of Nuc.  RRS_irrelevant    SRG        SRG%
+Chr01   56831624       47431131      9400493   16.5%
+Chr02   48577505       40399654      8177851   16.8%
+Chr03   45779781       38190044      7589737   16.6%
+Chr04   52389146       43078803      9310343   17.8%
+Chr05   42234498       34821501      7412997   17.6%
+Chr06   51416486       42642565      8773921   17.1%
+Chr07   44630646       36947187      7683459   17.2%
+Chr08   47837940       39353466      8484474   17.7%
+Chr09   50189764       41608015      8581749   17.1%
+Chr10   51566898       42257435      9309463   18.1%
+Chr11   34766867       28390597      6376270   18.3%
+Chr12   40091314       33339871      6751443   16.8%
+Chr13   45874162       37597763      8276399   18.0%
+Chr14   49042192       40888703      8153489   16.6%
+Chr15   51756343       43085537      8670806   16.8%
+Chr16   37887014       31726488      6160526   16.3%
+Chr17   41641366       34146175      7495191   18.0%
+Chr18   58018742       48590966      9427776   16.3%
+Chr19   50746916       42072465      8674451   17.1%
+Chr20   47904181       39443157      8461024   17.7%
+Total  949183385      786011523    163171862   17.2%
+```
+
+---
 
 ### **Reminder:** same as any reference genome you should index the SRG before using:
 
@@ -124,6 +170,8 @@ Example:
 ```bwa index -a bwtsw SRG.fasta```  
 ```samtools faidx SRG.fasta```  
 
+---
+
+## Now you can use SRG as a reference genome in your RRS pipeline.
 
 
-## Now you can use SRG as a reference genome in your RRS pipeline.  
